@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Edit Page";
+}
+
+@model List<Crud_app_mvc_1.Models.Entities.Student>
+
+<h1>Students</h1>
+<a asp-controller="Students" asp-action="Add" class="btn btn-primary">Add New Student</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Subscribed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                <td>@student.Email</td>
+                <td>@student.Phone</td>
+                <td>@(student.Subscribed ? "Yes" : "No")</td>
+                <td>
+                    <a asp-controller="Students" asp-action="Edit" asp-route-id="@student.Id" class="btn btn-sm btn-warning">Edit</a>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
